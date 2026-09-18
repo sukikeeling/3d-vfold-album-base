@@ -608,24 +608,8 @@
   let isTilted = false;
   let currentCardIndex = 0;
   const totalCards = cards.length;
-  let hasStartedMusic = false;
 
-  /* 核心音频控制：在用户首次产生滑动/点击翻页交互时，触发周杰伦音乐播放！ */
-  function playJayMusicOnFlip() {
-    if (!bgMusic) return;
-    if (bgMusic.paused) {
-      bgMusic.play().then(() => {
-        vinylDisc.classList.add('disc-rotating');
-        musicLabel.innerText = 'PLAYING ♫';
-        hasStartedMusic = true;
-      }).catch(err => {
-        // 浏览器若因无本地同名音频或权限暂时拦截，保持优雅静音标识
-        console.log('音频待用户触发或未检测到本地同名音频文件:', err);
-      });
-    }
-  }
-
-  // 点击右上角黑胶唱片也可手动切换播放/暂停
+  // 点击右上角黑胶唱片手动切换播放/暂停
   if (musicToggle) {
     musicToggle.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -715,21 +699,18 @@
   }
 
   function nextStep() {
-    playJayMusicOnFlip();
     if (currentCardIndex < totalCards - 1) currentCardIndex++;
     else currentCardIndex = 0;
     renderAllCards();
   }
 
   function prevStep() {
-    playJayMusicOnFlip();
     if (currentCardIndex > 0) currentCardIndex--;
     else currentCardIndex = totalCards - 1;
     renderAllCards();
   }
 
   scaffold.addEventListener('click', () => {
-    playJayMusicOnFlip();
     if (!isTilted) toggleTiltState();
     else nextStep();
   });
