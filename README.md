@@ -42,3 +42,7 @@ Find the `.photo-slot` elements on `Card 1`, `Card 3`, `Card 5`, and `Card 7`, a
 ## 📜 License
 
 MIT License. Crafted with romance and technical devotion.
+
+## 仓库声明
+
+本仓库的署名与参考规范见 [NOTICE](NOTICE)：参考、借鉴或改造本仓库时，请标明来源 sukikeeling/3d-vfold-album-base。
